@@ -1,45 +1,56 @@
 #include <stdio.h>
 
-int main() {
-    // Move a Torre 5 casas para a direita
-    for (int i = 0; i < 5; i++) {
-        printf("Direita\n"); // Imprime a direção do movimento
+// Move a Torre 5 casas para a Direita
+void moverTorre(int casas) {
+    if (casas > 0) {
+        printf("Direita\n");
+        moverTorre(casas - 1);
     }
+}
 
-    printf("\n");
-
-    // Move o Bispo 5 casas diagonais à direita
-    int contador = 0;
-
-    while (contador < 5) {
-        printf("Cima Direita\n", contador); // Imprime a direção do movimento
-        contador++;
+// Move o Bispo 5 casas para a Cima Direita
+void moverBispo(int casas) {
+    if (casas > 0) {
+        printf("Cima Direita\n");
+        moverBispo(casas - 1);
     }
+}
 
-    printf("\n");
-
-    // Move a Rainha 8 casas à esquerda
-    int movimento = 1;
-
-    do{
+// Move a Rainha 8 casas para a Esquerda
+void moverRainha(int casas) {
+    if (casas > 0) {
         printf("Esquerda\n");
-        movimento++;
+        moverRainha(casas - 1);
+    }
+}
 
-    } while (movimento <= 8);
+// Move a Rainha 8 casas para a Esquerda
+void moverCavalo(int casas) {
+    if (casas > 0) {
+        printf("Baixo\n");
+        moverCavalo(casas - 1);
+    }
+}
 
+void moverCavalo2(int casas) {
+    if (casas > 0) {
+        printf("Esquerda\n");
+        moverCavalo2(casas - 1);
+    }
+     
+}
+
+int main() {
+    moverTorre(5);
     printf("\n");
 
-    // Move o cavalo 2 casas para baixo e 1 casa para a esquerda
-    int movimentoClompleto = 1; // Flag para controlar o movimeto "L"
+    moverBispo(5);
+    printf("\n");
 
-    while (movimentoClompleto--)
-    {
-       for (int i = 0; i <3; i++) {
-           printf("Baixo\n"); // Imprime "Baixo 3 vezes"
+    moverRainha(8);
+    printf("\n");
 
-       }
-       printf("Esquerda\n"); // Imprime "Direita" uma vez
-    } 
-       
+    moverCavalo(3);
+    moverCavalo2(1);
     return 0;
 }
